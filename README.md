@@ -1,16 +1,29 @@
-# habitflow
+# HabitFlow — Smart Habit Tracker
 
-A new Flutter project.
+HabitFlow is a Flutter + Firebase mobile app that helps you build and maintain good habits.  
+It supports habit tracking, streaks, reminders, progress visualization, and offline sync.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## ✨ Features
+- User authentication (Email/Password with Firebase Auth)
+- Create, edit, and delete habits
+- Daily check-ins and streak tracking
+- Notifications and reminders
+- Charts & analytics for progress
+- Light/Dark mode
+- Offline-first with local storage
 
-A few resources to get you started if this is your first Flutter project:
+---
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 🚀 Getting Started
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### 1. Prerequisites
+- [Flutter SDK](https://docs.flutter.dev/get-started/install) installed
+- Android Studio / VS Code with Flutter & Dart plugins
+- A Firebase project with **Authentication** and **Firestore** enabled
+
+### 2. Clone the repository
+```bash
+git clone https://github.com/mzayan-bit/habitflow-app
+cd HabitFlow
