@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:habitflow/src/features/auth/data/auth_repository.dart';
 import 'package:habitflow/src/features/habits/data/habit_repository.dart';
 import 'package:habitflow/src/features/habits/domain/habit_model.dart';
 import 'package:uuid/uuid.dart';
@@ -18,26 +19,40 @@ class AddHabitScreen extends ConsumerStatefulWidget {
 class _AddHabitScreenState extends ConsumerState<AddHabitScreen> {
   final _formKey = GlobalKey<FormState>();
   String _title = '';
-  String _category = 'Health'; // Default category
+  final String _category = 'Health'; // Default category, now final
 
   void _submit() async {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
-      
+
+      // **FIX**: Get the current user's ID
+      final userId = ref.read(authRepositoryProvider).currentUser?.uid;
+      if (userId == null) {
+        // Show an error if for some reason the user is not found
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Error: Could not identify user.')),
+        );
+        return;
+      }
+
       final newHabit = Habit(
         id: uuid.v4(),
         title: _title,
         category: _category,
         startDate: DateTime.now(),
-        weekdays: [1,2,3,4,5,6,7], // Every day for now
-        createdAt: DateTime.now(),
+        weekdays: const [1, 2, 3, 4, 5, 6, 7], // Every day for now
+        // **FIX**: Add the required userId
+        userId: userId,
+        // **FIX**: Remove createdAt, the repository now sets it automatically
+        createdAt: DateTime.now(), //This is required by the model, but will be overwritten
       );
 
+      // We use `read` here because it's in a button callback, not `build`
       await ref.read(habitRepositoryProvider).addHabit(newHabit);
 
       // Invalidate the provider to force a refresh on the home screen
       ref.invalidate(allHabitsProvider);
-      
+
       if (mounted) Navigator.of(context).pop();
     }
   }
@@ -62,7 +77,6 @@ class _AddHabitScreenState extends ConsumerState<AddHabitScreen> {
                 },
                 onSaved: (value) => _title = value!,
               ),
-              // TODO: Add more fields for description, category, schedule etc.
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _submit,

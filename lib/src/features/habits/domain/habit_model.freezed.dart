@@ -29,16 +29,16 @@ mixin _$Habit {
   @HiveField(3)
   String get category => throw _privateConstructorUsedError;
   @HiveField(4)
-  DateTime get startDate =>
-      throw _privateConstructorUsedError; // Note: For complex objects like 'schedule', you might need a separate model
-// with its own TypeAdapter. For now, we'll keep it simple.
+  DateTime get startDate => throw _privateConstructorUsedError;
   @HiveField(5)
-  List<int> get weekdays =>
-      throw _privateConstructorUsedError; // e.g., [1, 3, 5] for Mon, Wed, Fri
+  List<int> get weekdays => throw _privateConstructorUsedError;
   @HiveField(6)
   DateTime get createdAt => throw _privateConstructorUsedError;
   @HiveField(7)
-  DateTime? get updatedAt => throw _privateConstructorUsedError;
+  DateTime? get updatedAt =>
+      throw _privateConstructorUsedError; // Add userId for Firestore pathing
+  @HiveField(8)
+  String get userId => throw _privateConstructorUsedError;
 
   /// Serializes this Habit to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -62,7 +62,8 @@ abstract class $HabitCopyWith<$Res> {
       @HiveField(4) DateTime startDate,
       @HiveField(5) List<int> weekdays,
       @HiveField(6) DateTime createdAt,
-      @HiveField(7) DateTime? updatedAt});
+      @HiveField(7) DateTime? updatedAt,
+      @HiveField(8) String userId});
 }
 
 /// @nodoc
@@ -88,6 +89,7 @@ class _$HabitCopyWithImpl<$Res, $Val extends Habit>
     Object? weekdays = null,
     Object? createdAt = null,
     Object? updatedAt = freezed,
+    Object? userId = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -122,6 +124,10 @@ class _$HabitCopyWithImpl<$Res, $Val extends Habit>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -141,7 +147,8 @@ abstract class _$$HabitImplCopyWith<$Res> implements $HabitCopyWith<$Res> {
       @HiveField(4) DateTime startDate,
       @HiveField(5) List<int> weekdays,
       @HiveField(6) DateTime createdAt,
-      @HiveField(7) DateTime? updatedAt});
+      @HiveField(7) DateTime? updatedAt,
+      @HiveField(8) String userId});
 }
 
 /// @nodoc
@@ -165,6 +172,7 @@ class __$$HabitImplCopyWithImpl<$Res>
     Object? weekdays = null,
     Object? createdAt = null,
     Object? updatedAt = freezed,
+    Object? userId = null,
   }) {
     return _then(_$HabitImpl(
       id: null == id
@@ -199,6 +207,10 @@ class __$$HabitImplCopyWithImpl<$Res>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -214,7 +226,8 @@ class _$HabitImpl implements _Habit {
       @HiveField(4) required this.startDate,
       @HiveField(5) required final List<int> weekdays,
       @HiveField(6) required this.createdAt,
-      @HiveField(7) this.updatedAt})
+      @HiveField(7) this.updatedAt,
+      @HiveField(8) required this.userId})
       : _weekdays = weekdays;
 
   factory _$HabitImpl.fromJson(Map<String, dynamic> json) =>
@@ -235,11 +248,7 @@ class _$HabitImpl implements _Habit {
   @override
   @HiveField(4)
   final DateTime startDate;
-// Note: For complex objects like 'schedule', you might need a separate model
-// with its own TypeAdapter. For now, we'll keep it simple.
   final List<int> _weekdays;
-// Note: For complex objects like 'schedule', you might need a separate model
-// with its own TypeAdapter. For now, we'll keep it simple.
   @override
   @HiveField(5)
   List<int> get weekdays {
@@ -248,17 +257,20 @@ class _$HabitImpl implements _Habit {
     return EqualUnmodifiableListView(_weekdays);
   }
 
-// e.g., [1, 3, 5] for Mon, Wed, Fri
   @override
   @HiveField(6)
   final DateTime createdAt;
   @override
   @HiveField(7)
   final DateTime? updatedAt;
+// Add userId for Firestore pathing
+  @override
+  @HiveField(8)
+  final String userId;
 
   @override
   String toString() {
-    return 'Habit(id: $id, title: $title, description: $description, category: $category, startDate: $startDate, weekdays: $weekdays, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'Habit(id: $id, title: $title, description: $description, category: $category, startDate: $startDate, weekdays: $weekdays, createdAt: $createdAt, updatedAt: $updatedAt, userId: $userId)';
   }
 
   @override
@@ -278,7 +290,8 @@ class _$HabitImpl implements _Habit {
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt));
+                other.updatedAt == updatedAt) &&
+            (identical(other.userId, userId) || other.userId == userId));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -292,7 +305,8 @@ class _$HabitImpl implements _Habit {
       startDate,
       const DeepCollectionEquality().hash(_weekdays),
       createdAt,
-      updatedAt);
+      updatedAt,
+      userId);
 
   /// Create a copy of Habit
   /// with the given fields replaced by the non-null parameter values.
@@ -319,7 +333,8 @@ abstract class _Habit implements Habit {
       @HiveField(4) required final DateTime startDate,
       @HiveField(5) required final List<int> weekdays,
       @HiveField(6) required final DateTime createdAt,
-      @HiveField(7) final DateTime? updatedAt}) = _$HabitImpl;
+      @HiveField(7) final DateTime? updatedAt,
+      @HiveField(8) required final String userId}) = _$HabitImpl;
 
   factory _Habit.fromJson(Map<String, dynamic> json) = _$HabitImpl.fromJson;
 
@@ -337,18 +352,19 @@ abstract class _Habit implements Habit {
   String get category;
   @override
   @HiveField(4)
-  DateTime
-      get startDate; // Note: For complex objects like 'schedule', you might need a separate model
-// with its own TypeAdapter. For now, we'll keep it simple.
+  DateTime get startDate;
   @override
   @HiveField(5)
-  List<int> get weekdays; // e.g., [1, 3, 5] for Mon, Wed, Fri
+  List<int> get weekdays;
   @override
   @HiveField(6)
   DateTime get createdAt;
   @override
   @HiveField(7)
-  DateTime? get updatedAt;
+  DateTime? get updatedAt; // Add userId for Firestore pathing
+  @override
+  @HiveField(8)
+  String get userId;
 
   /// Create a copy of Habit
   /// with the given fields replaced by the non-null parameter values.

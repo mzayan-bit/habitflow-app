@@ -25,13 +25,14 @@ class HabitAdapter extends TypeAdapter<Habit> {
       weekdays: (fields[5] as List).cast<int>(),
       createdAt: fields[6] as DateTime,
       updatedAt: fields[7] as DateTime?,
+      userId: fields[8] as String,
     );
   }
 
   @override
   void write(BinaryWriter writer, Habit obj) {
     writer
-      ..writeByte(8)
+      ..writeByte(9)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -47,7 +48,9 @@ class HabitAdapter extends TypeAdapter<Habit> {
       ..writeByte(6)
       ..write(obj.createdAt)
       ..writeByte(7)
-      ..write(obj.updatedAt);
+      ..write(obj.updatedAt)
+      ..writeByte(8)
+      ..write(obj.userId);
   }
 
   @override
@@ -78,6 +81,7 @@ _$HabitImpl _$$HabitImplFromJson(Map<String, dynamic> json) => _$HabitImpl(
       updatedAt: json['updatedAt'] == null
           ? null
           : DateTime.parse(json['updatedAt'] as String),
+      userId: json['userId'] as String,
     );
 
 Map<String, dynamic> _$$HabitImplToJson(_$HabitImpl instance) =>
@@ -90,4 +94,5 @@ Map<String, dynamic> _$$HabitImplToJson(_$HabitImpl instance) =>
       'weekdays': instance.weekdays,
       'createdAt': instance.createdAt.toIso8601String(),
       'updatedAt': instance.updatedAt?.toIso8601String(),
+      'userId': instance.userId,
     };
