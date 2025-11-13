@@ -26,13 +26,16 @@ class HabitAdapter extends TypeAdapter<Habit> {
       createdAt: fields[6] as DateTime,
       updatedAt: fields[7] as DateTime?,
       userId: fields[8] as String,
+      color: fields[9] as int,
+      iconCode: fields[10] as int,
+      iconFamily: fields[11] as String,
     );
   }
 
   @override
   void write(BinaryWriter writer, Habit obj) {
     writer
-      ..writeByte(9)
+      ..writeByte(12)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -50,7 +53,13 @@ class HabitAdapter extends TypeAdapter<Habit> {
       ..writeByte(7)
       ..write(obj.updatedAt)
       ..writeByte(8)
-      ..write(obj.userId);
+      ..write(obj.userId)
+      ..writeByte(9)
+      ..write(obj.color)
+      ..writeByte(10)
+      ..write(obj.iconCode)
+      ..writeByte(11)
+      ..write(obj.iconFamily);
   }
 
   @override
@@ -82,6 +91,9 @@ _$HabitImpl _$$HabitImplFromJson(Map<String, dynamic> json) => _$HabitImpl(
           ? null
           : DateTime.parse(json['updatedAt'] as String),
       userId: json['userId'] as String,
+      color: (json['color'] as num?)?.toInt() ?? 0xFF6A11CB,
+      iconCode: (json['iconCode'] as num?)?.toInt() ?? 58831,
+      iconFamily: json['iconFamily'] as String? ?? "MaterialIcons",
     );
 
 Map<String, dynamic> _$$HabitImplToJson(_$HabitImpl instance) =>
@@ -95,4 +107,7 @@ Map<String, dynamic> _$$HabitImplToJson(_$HabitImpl instance) =>
       'createdAt': instance.createdAt.toIso8601String(),
       'updatedAt': instance.updatedAt?.toIso8601String(),
       'userId': instance.userId,
+      'color': instance.color,
+      'iconCode': instance.iconCode,
+      'iconFamily': instance.iconFamily,
     };

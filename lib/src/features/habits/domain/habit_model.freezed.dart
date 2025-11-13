@@ -22,23 +22,61 @@ Habit _$HabitFromJson(Map<String, dynamic> json) {
 mixin _$Habit {
   @HiveField(0)
   String get id => throw _privateConstructorUsedError;
+  @HiveField(0)
+  set id(String value) => throw _privateConstructorUsedError;
   @HiveField(1)
   String get title => throw _privateConstructorUsedError;
+  @HiveField(1)
+  set title(String value) => throw _privateConstructorUsedError;
   @HiveField(2)
   String? get description => throw _privateConstructorUsedError;
+  @HiveField(2)
+  set description(String? value) => throw _privateConstructorUsedError;
   @HiveField(3)
   String get category => throw _privateConstructorUsedError;
+  @HiveField(3)
+  set category(String value) => throw _privateConstructorUsedError;
   @HiveField(4)
   DateTime get startDate => throw _privateConstructorUsedError;
+  @HiveField(4)
+  set startDate(DateTime value) => throw _privateConstructorUsedError;
   @HiveField(5)
   List<int> get weekdays => throw _privateConstructorUsedError;
+  @HiveField(5)
+  set weekdays(List<int> value) => throw _privateConstructorUsedError;
   @HiveField(6)
   DateTime get createdAt => throw _privateConstructorUsedError;
+  @HiveField(6)
+  set createdAt(DateTime value) => throw _privateConstructorUsedError;
   @HiveField(7)
-  DateTime? get updatedAt =>
-      throw _privateConstructorUsedError; // Add userId for Firestore pathing
+  DateTime? get updatedAt => throw _privateConstructorUsedError;
+  @HiveField(7)
+  set updatedAt(DateTime? value) => throw _privateConstructorUsedError;
   @HiveField(8)
   String get userId => throw _privateConstructorUsedError;
+  @HiveField(8)
+  set userId(String value) =>
+      throw _privateConstructorUsedError; // --- NEW FIELDS ---
+  @HiveField(9)
+  int get color => throw _privateConstructorUsedError; // --- NEW FIELDS ---
+  @HiveField(9)
+  set color(int value) => throw _privateConstructorUsedError;
+  @HiveField(10)
+  int get iconCode => throw _privateConstructorUsedError;
+  @HiveField(10)
+  set iconCode(int value) => throw _privateConstructorUsedError;
+  @HiveField(11)
+  String get iconFamily => throw _privateConstructorUsedError;
+  @HiveField(11)
+  set iconFamily(String value) =>
+      throw _privateConstructorUsedError; // --- TEMPORARY UI FIELD ---
+// This is a temporary field for UI state and will not be stored
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  bool get isCompletedToday =>
+      throw _privateConstructorUsedError; // --- TEMPORARY UI FIELD ---
+// This is a temporary field for UI state and will not be stored
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  set isCompletedToday(bool value) => throw _privateConstructorUsedError;
 
   /// Serializes this Habit to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -63,7 +101,12 @@ abstract class $HabitCopyWith<$Res> {
       @HiveField(5) List<int> weekdays,
       @HiveField(6) DateTime createdAt,
       @HiveField(7) DateTime? updatedAt,
-      @HiveField(8) String userId});
+      @HiveField(8) String userId,
+      @HiveField(9) int color,
+      @HiveField(10) int iconCode,
+      @HiveField(11) String iconFamily,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      bool isCompletedToday});
 }
 
 /// @nodoc
@@ -90,6 +133,10 @@ class _$HabitCopyWithImpl<$Res, $Val extends Habit>
     Object? createdAt = null,
     Object? updatedAt = freezed,
     Object? userId = null,
+    Object? color = null,
+    Object? iconCode = null,
+    Object? iconFamily = null,
+    Object? isCompletedToday = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -128,6 +175,22 @@ class _$HabitCopyWithImpl<$Res, $Val extends Habit>
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String,
+      color: null == color
+          ? _value.color
+          : color // ignore: cast_nullable_to_non_nullable
+              as int,
+      iconCode: null == iconCode
+          ? _value.iconCode
+          : iconCode // ignore: cast_nullable_to_non_nullable
+              as int,
+      iconFamily: null == iconFamily
+          ? _value.iconFamily
+          : iconFamily // ignore: cast_nullable_to_non_nullable
+              as String,
+      isCompletedToday: null == isCompletedToday
+          ? _value.isCompletedToday
+          : isCompletedToday // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -148,7 +211,12 @@ abstract class _$$HabitImplCopyWith<$Res> implements $HabitCopyWith<$Res> {
       @HiveField(5) List<int> weekdays,
       @HiveField(6) DateTime createdAt,
       @HiveField(7) DateTime? updatedAt,
-      @HiveField(8) String userId});
+      @HiveField(8) String userId,
+      @HiveField(9) int color,
+      @HiveField(10) int iconCode,
+      @HiveField(11) String iconFamily,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      bool isCompletedToday});
 }
 
 /// @nodoc
@@ -173,6 +241,10 @@ class __$$HabitImplCopyWithImpl<$Res>
     Object? createdAt = null,
     Object? updatedAt = freezed,
     Object? userId = null,
+    Object? color = null,
+    Object? iconCode = null,
+    Object? iconFamily = null,
+    Object? isCompletedToday = null,
   }) {
     return _then(_$HabitImpl(
       id: null == id
@@ -196,7 +268,7 @@ class __$$HabitImplCopyWithImpl<$Res>
           : startDate // ignore: cast_nullable_to_non_nullable
               as DateTime,
       weekdays: null == weekdays
-          ? _value._weekdays
+          ? _value.weekdays
           : weekdays // ignore: cast_nullable_to_non_nullable
               as List<int>,
       createdAt: null == createdAt
@@ -211,6 +283,22 @@ class __$$HabitImplCopyWithImpl<$Res>
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String,
+      color: null == color
+          ? _value.color
+          : color // ignore: cast_nullable_to_non_nullable
+              as int,
+      iconCode: null == iconCode
+          ? _value.iconCode
+          : iconCode // ignore: cast_nullable_to_non_nullable
+              as int,
+      iconFamily: null == iconFamily
+          ? _value.iconFamily
+          : iconFamily // ignore: cast_nullable_to_non_nullable
+              as String,
+      isCompletedToday: null == isCompletedToday
+          ? _value.isCompletedToday
+          : isCompletedToday // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -218,95 +306,75 @@ class __$$HabitImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$HabitImpl implements _Habit {
-  const _$HabitImpl(
+  _$HabitImpl(
       {@HiveField(0) required this.id,
       @HiveField(1) required this.title,
       @HiveField(2) this.description,
       @HiveField(3) required this.category,
       @HiveField(4) required this.startDate,
-      @HiveField(5) required final List<int> weekdays,
+      @HiveField(5) required this.weekdays,
       @HiveField(6) required this.createdAt,
       @HiveField(7) this.updatedAt,
-      @HiveField(8) required this.userId})
-      : _weekdays = weekdays;
+      @HiveField(8) required this.userId,
+      @HiveField(9) this.color = 0xFF6A11CB,
+      @HiveField(10) this.iconCode = 58831,
+      @HiveField(11) this.iconFamily = "MaterialIcons",
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      this.isCompletedToday = false});
 
   factory _$HabitImpl.fromJson(Map<String, dynamic> json) =>
       _$$HabitImplFromJson(json);
 
   @override
   @HiveField(0)
-  final String id;
+  String id;
   @override
   @HiveField(1)
-  final String title;
+  String title;
   @override
   @HiveField(2)
-  final String? description;
+  String? description;
   @override
   @HiveField(3)
-  final String category;
+  String category;
   @override
   @HiveField(4)
-  final DateTime startDate;
-  final List<int> _weekdays;
+  DateTime startDate;
   @override
   @HiveField(5)
-  List<int> get weekdays {
-    if (_weekdays is EqualUnmodifiableListView) return _weekdays;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_weekdays);
-  }
-
+  List<int> weekdays;
   @override
   @HiveField(6)
-  final DateTime createdAt;
+  DateTime createdAt;
   @override
   @HiveField(7)
-  final DateTime? updatedAt;
-// Add userId for Firestore pathing
+  DateTime? updatedAt;
   @override
   @HiveField(8)
-  final String userId;
+  String userId;
+// --- NEW FIELDS ---
+  @override
+  @JsonKey()
+  @HiveField(9)
+  int color;
+  @override
+  @JsonKey()
+  @HiveField(10)
+  int iconCode;
+  @override
+  @JsonKey()
+  @HiveField(11)
+  String iconFamily;
+// --- TEMPORARY UI FIELD ---
+// This is a temporary field for UI state and will not be stored
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  bool isCompletedToday;
 
   @override
   String toString() {
-    return 'Habit(id: $id, title: $title, description: $description, category: $category, startDate: $startDate, weekdays: $weekdays, createdAt: $createdAt, updatedAt: $updatedAt, userId: $userId)';
+    return 'Habit(id: $id, title: $title, description: $description, category: $category, startDate: $startDate, weekdays: $weekdays, createdAt: $createdAt, updatedAt: $updatedAt, userId: $userId, color: $color, iconCode: $iconCode, iconFamily: $iconFamily, isCompletedToday: $isCompletedToday)';
   }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$HabitImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.title, title) || other.title == title) &&
-            (identical(other.description, description) ||
-                other.description == description) &&
-            (identical(other.category, category) ||
-                other.category == category) &&
-            (identical(other.startDate, startDate) ||
-                other.startDate == startDate) &&
-            const DeepCollectionEquality().equals(other._weekdays, _weekdays) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
-            (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt) &&
-            (identical(other.userId, userId) || other.userId == userId));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      title,
-      description,
-      category,
-      startDate,
-      const DeepCollectionEquality().hash(_weekdays),
-      createdAt,
-      updatedAt,
-      userId);
 
   /// Create a copy of Habit
   /// with the given fields replaced by the non-null parameter values.
@@ -325,46 +393,91 @@ class _$HabitImpl implements _Habit {
 }
 
 abstract class _Habit implements Habit {
-  const factory _Habit(
-      {@HiveField(0) required final String id,
-      @HiveField(1) required final String title,
-      @HiveField(2) final String? description,
-      @HiveField(3) required final String category,
-      @HiveField(4) required final DateTime startDate,
-      @HiveField(5) required final List<int> weekdays,
-      @HiveField(6) required final DateTime createdAt,
-      @HiveField(7) final DateTime? updatedAt,
-      @HiveField(8) required final String userId}) = _$HabitImpl;
+  factory _Habit(
+      {@HiveField(0) required String id,
+      @HiveField(1) required String title,
+      @HiveField(2) String? description,
+      @HiveField(3) required String category,
+      @HiveField(4) required DateTime startDate,
+      @HiveField(5) required List<int> weekdays,
+      @HiveField(6) required DateTime createdAt,
+      @HiveField(7) DateTime? updatedAt,
+      @HiveField(8) required String userId,
+      @HiveField(9) int color,
+      @HiveField(10) int iconCode,
+      @HiveField(11) String iconFamily,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      bool isCompletedToday}) = _$HabitImpl;
 
   factory _Habit.fromJson(Map<String, dynamic> json) = _$HabitImpl.fromJson;
 
   @override
   @HiveField(0)
   String get id;
+  @HiveField(0)
+  set id(String value);
   @override
   @HiveField(1)
   String get title;
+  @HiveField(1)
+  set title(String value);
   @override
   @HiveField(2)
   String? get description;
+  @HiveField(2)
+  set description(String? value);
   @override
   @HiveField(3)
   String get category;
+  @HiveField(3)
+  set category(String value);
   @override
   @HiveField(4)
   DateTime get startDate;
+  @HiveField(4)
+  set startDate(DateTime value);
   @override
   @HiveField(5)
   List<int> get weekdays;
+  @HiveField(5)
+  set weekdays(List<int> value);
   @override
   @HiveField(6)
   DateTime get createdAt;
+  @HiveField(6)
+  set createdAt(DateTime value);
   @override
   @HiveField(7)
-  DateTime? get updatedAt; // Add userId for Firestore pathing
+  DateTime? get updatedAt;
+  @HiveField(7)
+  set updatedAt(DateTime? value);
   @override
   @HiveField(8)
   String get userId;
+  @HiveField(8)
+  set userId(String value); // --- NEW FIELDS ---
+  @override
+  @HiveField(9)
+  int get color; // --- NEW FIELDS ---
+  @HiveField(9)
+  set color(int value);
+  @override
+  @HiveField(10)
+  int get iconCode;
+  @HiveField(10)
+  set iconCode(int value);
+  @override
+  @HiveField(11)
+  String get iconFamily;
+  @HiveField(11)
+  set iconFamily(String value); // --- TEMPORARY UI FIELD ---
+// This is a temporary field for UI state and will not be stored
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  bool get isCompletedToday; // --- TEMPORARY UI FIELD ---
+// This is a temporary field for UI state and will not be stored
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  set isCompletedToday(bool value);
 
   /// Create a copy of Habit
   /// with the given fields replaced by the non-null parameter values.

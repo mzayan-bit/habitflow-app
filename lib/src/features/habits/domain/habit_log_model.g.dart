@@ -1,0 +1,70 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'habit_log_model.dart';
+
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class HabitLogAdapter extends TypeAdapter<HabitLog> {
+  @override
+  final int typeId = 1;
+
+  @override
+  HabitLog read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return HabitLog(
+      id: fields[0] as String,
+      habitId: fields[1] as String,
+      date: fields[2] as DateTime,
+      count: fields[3] as int,
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, HabitLog obj) {
+    writer
+      ..writeByte(4)
+      ..writeByte(0)
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.habitId)
+      ..writeByte(2)
+      ..write(obj.date)
+      ..writeByte(3)
+      ..write(obj.count);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is HabitLogAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+_$HabitLogImpl _$$HabitLogImplFromJson(Map<String, dynamic> json) =>
+    _$HabitLogImpl(
+      id: json['id'] as String,
+      habitId: json['habitId'] as String,
+      date: DateTime.parse(json['date'] as String),
+      count: (json['count'] as num?)?.toInt() ?? 1,
+    );
+
+Map<String, dynamic> _$$HabitLogImplToJson(_$HabitLogImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'habitId': instance.habitId,
+      'date': instance.date.toIso8601String(),
+      'count': instance.count,
+    };

@@ -2,9 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:habitflow/main.dart';
 import 'package:habitflow/src/features/auth/data/auth_repository.dart';
-import 'package:habitflow/src/features/auth/presentation/login_screen.dart'; // We will create this next
-import 'package:habitflow/src/features/habits/presentation/home_screen.dart'; // And this one too
+import 'package:habitflow/src/features/auth/presentation/login_screen.dart';
+import 'package:habitflow/src/shared/widgets/app_shell.dart';
 
 class AuthWrapper extends ConsumerWidget {
   const AuthWrapper({super.key});
@@ -16,17 +17,19 @@ class AuthWrapper extends ConsumerWidget {
     return authState.when(
       data: (user) {
         if (user != null) {
-          // User is logged in, show the home screen
-          return const HomeScreen();
+          // User is logged in, show the full app shell
+          return const AppShell();
         } else {
           // User is not logged in, show the login screen
           return const LoginScreen();
         }
       },
       loading: () => const Scaffold(
+        backgroundColor: HabitFlowTheme.darkBg,
         body: Center(child: CircularProgressIndicator()),
       ),
       error: (error, stackTrace) => Scaffold(
+        backgroundColor: HabitFlowTheme.darkBg,
         body: Center(child: Text('Something went wrong: $error')),
       ),
     );

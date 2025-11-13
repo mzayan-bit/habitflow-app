@@ -12,7 +12,20 @@
           "package_name": "com.example.habitflow"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "512326679859-k85t33pb1gogoo96hpuu8ouuh5ftrtr4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.habitflow",
+            "certificate_hash": "041ee19ef4dd73c9c0e503e28a4d55e190b3a865"
+          }
+        },
+        {
+          "client_id": "512326679859-carq33g3ka5r7sk17af2oequad14e436.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyAq94RINuBZkbw-388gUQC2WUY5nzlrpio"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "512326679859-carq33g3ka5r7sk17af2oequad14e436.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
