@@ -81,7 +81,7 @@ A Firebase Project
 
     📂 Project Structure
     The project follows a Feature-First architecture for scalability:
-
+'''
     lib/
     ├── main.dart                  # Entry point & Theme config
     ├── src/
@@ -95,7 +95,7 @@ A Firebase Project
     │   └── shared/
     │       ├── services/          # Notification Service
     │       └── widgets/           # AppShell, Reusable UI
-
+'''
 
 🤝 Contributing
 Contributions are welcome! Please fork the repository and submit a pull request.
